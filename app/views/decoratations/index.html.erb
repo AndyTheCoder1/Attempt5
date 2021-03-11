@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all decoratations
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new decoratation
+    </h2>
+
+    <form action="/insert_decoratation" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="answer_id_box">
+          Answer
+        </label>
+
+        <input type="text" id="answer_id_box" name="query_answer_id">
+      </div>
+
+      <button>
+        Create decoratation
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Answer
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_decoratations.each do |a_decoratation| %>
+      <tr>
+        <td>
+          <%= a_decoratation.id %>
+        </td>
+
+        <td>
+          <%= a_decoratation.user_id %>
+        </td>
+
+        <td>
+          <%= a_decoratation.answer_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_decoratation.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_decoratation.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/decoratations/<%= a_decoratation.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

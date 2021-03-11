@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Decoratation #<%= @the_decoratation.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/decoratations">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_decoratation/<%= @the_decoratation.id %>">
+          Delete decoratation
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_decoratation.user_id %>
+      </dd>
+
+      <dt>
+        Answer
+      </dt>
+      <dd>
+        <%= @the_decoratation.answer_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_decoratation.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_decoratation.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit decoratation
+    </h2>
+
+    <form action="/modify_decoratation/<%= @the_decoratation.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_decoratation.user_id %>">
+      </div>
+
+      <div>
+        <label for="answer_id_box">
+          Answer
+        </label>
+
+        <input type="text" id="answer_id_box" name="query_answer_id" value="<%= @the_decoratation.answer_id %>">
+      </div>
+
+      <button>
+        Update decoratation
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

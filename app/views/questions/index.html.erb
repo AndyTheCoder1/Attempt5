@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all questions
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new question
+    </h2>
+
+    <form action="/insert_question" method="post">
+      <div>
+        <label for="question_box">
+          Question
+        </label>
+
+        <textarea id="question_box" name="query_question" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="answers_count_box">
+          Answers count
+        </label>
+
+        <input type="text" id="answers_count_box" name="query_answers_count">
+      </div>
+
+      <button>
+        Create question
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Question
+        </th>
+
+        <th>
+          Answers count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_questions.each do |a_question| %>
+      <tr>
+        <td>
+          <%= a_question.id %>
+        </td>
+
+        <td>
+          <%= a_question.question %>
+        </td>
+
+        <td>
+          <%= a_question.answers_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_question.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_question.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/questions/<%= a_question.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

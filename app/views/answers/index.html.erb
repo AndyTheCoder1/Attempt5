@@ -1,0 +1,166 @@
+<div>
+  <div>
+    <h1>
+      List of all answers
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new answer
+    </h2>
+
+    <form action="/insert_answer" method="post">
+      <div>
+        <label for="entry_box">
+          Entry
+        </label>
+
+        <textarea id="entry_box" name="query_entry" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image">
+      </div>
+
+      <div>
+        <label for="question_id_box">
+          Question
+        </label>
+
+        <input type="text" id="question_id_box" name="query_question_id">
+      </div>
+
+      <div>
+        <label for="decoratations_count_box">
+          Decoratations count
+        </label>
+
+        <input type="text" id="decoratations_count_box" name="query_decoratations_count">
+      </div>
+
+      <div>
+        <label for="comments_count_box">
+          Comments count
+        </label>
+
+        <input type="text" id="comments_count_box" name="query_comments_count">
+      </div>
+
+      <button>
+        Create answer
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Entry
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Question
+        </th>
+
+        <th>
+          Decoratations count
+        </th>
+
+        <th>
+          Comments count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_answers.each do |an_answer| %>
+      <tr>
+        <td>
+          <%= an_answer.id %>
+        </td>
+
+        <td>
+          <%= an_answer.entry %>
+        </td>
+
+        <td>
+          <%= an_answer.owner_id %>
+        </td>
+
+        <td>
+          <%= an_answer.image %>
+        </td>
+
+        <td>
+          <%= an_answer.question_id %>
+        </td>
+
+        <td>
+          <%= an_answer.decoratations_count %>
+        </td>
+
+        <td>
+          <%= an_answer.comments_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_answer.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_answer.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/answers/<%= an_answer.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
