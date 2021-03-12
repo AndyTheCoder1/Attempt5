@@ -16,6 +16,36 @@
   </head>
 
   <body>
+
+    <li>
+          <a href="/">Home</a>
+          </li>
+       
+        <% if @current_user == nil %>
+
+          <li>
+          <a href="/user_sign_in">Sign in</a>
+          </li>
+          <li>
+          <a href="/user_sign_up">Sign up</a>
+          </li>
+
+        <% else %>
+        
+        <li>
+          
+          <a href="/user_sign_out">Sign out</a>
+        </li>
+
+
+        Welcome, <%= @current_user.username %>
+      
+
+        <% end %>
+      </ul>
+    <p style="color: red"><%= alert%></p>
+    <p style="color: green"><%= notice%></p>
+
     <%= yield %>
   </body>
 </html>
