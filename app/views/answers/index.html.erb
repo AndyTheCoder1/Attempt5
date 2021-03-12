@@ -81,42 +81,32 @@
 
 <div>
   <div>
-    <table>
+    <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Entry
         </th>
 
         <th>
-          Owner
-        </th>
-
-        <th>
-          Image
-        </th>
-
-        <th>
-          Decoratations count
+          Seeker
         </th>
 
 
         <th>
-          Created at
+          Decoratation count
         </th>
 
+
         <th>
+          posting Time
         </th>
+
+       
       </tr>
 
       <% @list_of_answers.each do |an_answer| %>
       <tr>
-        <td>
-          <%= an_answer.id %>
-        </td>
 
         <td>
           <%= an_answer.entry %>
@@ -124,10 +114,6 @@
 
         <td>
           <%= an_answer.owner.username %>
-        </td>
-
-        <td>
-          <%= an_answer.image %>
         </td>
 
         <td>
@@ -140,20 +126,18 @@
         </td>
       
 
-        <td>
-          <a href="/answers/<%= an_answer.id %>">
-            view profile need to fix
-          </a>
-        </td>
+      
         <td>
           <a href="/answers/<%= an_answer.id %>">
             Decorate this Answer
           </a>
         </td>
       </tr>
+      
+
+      
+      
       <% end %>
     </table>
   </div>
 </div>
-
-<hr>
