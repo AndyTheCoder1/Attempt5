@@ -14,6 +14,25 @@ class DecoratationsController < ApplicationController
 
 
   end
+
+  def added
+
+    the_id = params.fetch("path_id")
+
+    correct_answer = Answer.where({ :id => the_id }).at(0)
+
+    correct_answer.decoratations_count = correct_answer.decoratations_count + 1
+
+    correct_answer.save
+
+    matching_decoratations = Answer.where({ :id => the_id }).at(0)
+
+    useruser = matching_decoratations.owner_id
+
+    redirect_to("/user/#{useruser}", { :notice => "Decoratation created successfully." })
+
+
+  end
   
   
   def index

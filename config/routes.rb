@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get("/", { :controller => "application", :action => "home" } )
 
+  get("/decorating/:path_id", { :controller => "decoratations", :action => "added" })
+
   # Routes for the Decoratation resource:
 
   get("/user/:path_id", { :controller => "user_authentication", :action => "profile" })
