@@ -2,7 +2,6 @@
 
 
 <center>
-<hr>
 <div>
   <div>
   
@@ -132,12 +131,19 @@
             Decorate this Answer
           </a>
         </td>
-
-        <td>
-          <a href="/user/<%= an_answer.owner.id %>">
-            visit user profile
-          </a>
-        </td>
+          <% if an_answer.owner.username == @current_user.username %>%
+            <td>
+                <a href="/edit_user_profile">
+                  visit your profile
+                </a>
+            </td>
+            <%else%>
+              <td>
+                <a href="/user/<%= an_answer.owner.id %>">
+                  visit user profile
+                </a>
+              </td>
+            <%end%>
 
       </tr>
       
