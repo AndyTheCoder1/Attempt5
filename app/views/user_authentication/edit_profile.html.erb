@@ -27,12 +27,16 @@
       <button>
         Update account
       </button>
+
+     
+    
     </form>
+
+    Or, <a href="/cancel_user_account"> delete your account</a> instead.
   </div>
 </div>
 
-<h1>Your Answers</h1>
-
+ <div>
   <div>
     <table border="1">
       <tr>
@@ -41,7 +45,7 @@
           Entry
         </th>
 
-
+    
 
         <th>
           Decoratation count
@@ -51,12 +55,23 @@
         <th>
           posting Time
         </th>
-
-       
       </tr>
 
-    
-      
-    
+      <% @matching_answers.each do |an_answer| %>
+      <tr>
+        <td>
+          <%= an_answer.entry %>
+        </td>
+
+        <td>
+          <%= an_answer.decoratations_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_answer.created_at) %> ago
+        </td>
+      </tr>
+      <%end%>
     </table>
   </div>
+</div>

@@ -1,0 +1,44 @@
+<h1><%=@correct_user.username%>'s Answers</h1>
+  <div>
+  <div>
+    <table border="1">
+      <tr>
+
+        <th>
+          Entry
+        </th>
+
+    
+
+        <th>
+          Decoratation count
+        </th>
+
+
+        <th>
+          posting Time
+        </th>
+      </tr>
+
+      <% @matching_answers.each do |an_answer| %>
+      <tr>
+        <td>
+          <%= an_answer.entry %>
+        </td>
+
+        <td>
+          <%= an_answer.decoratations_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_answer.created_at) %> ago
+        </td>
+      </tr>
+      <%end%>
+    </table>
+  </div>
+</div>
+
+
+
+

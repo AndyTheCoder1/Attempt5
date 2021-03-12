@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # Routes for the Decoratation resource:
 
+  get("/user/:path_id", { :controller => "user_authentication", :action => "profile" })
+
   # CREATE
   post("/insert_decoratation", { :controller => "decoratations", :action => "create" })
           

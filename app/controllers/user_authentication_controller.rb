@@ -2,6 +2,18 @@ class UserAuthenticationController < ApplicationController
   # Uncomment this if you want to force users to sign in before any other actions
   skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie, :home] })
 
+  
+  def profile
+    
+    the_id = params.fetch("path_id")
+
+    @correct_user = User.where({ :id => the_id }).at(0)
+
+    @matching_answers = Answer.where({ :owner => the_id })
+
+    render({ :template => "user_authentication/profile.html.erb" })
+  end
+  
   def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
   end
@@ -56,6 +68,13 @@ class UserAuthenticationController < ApplicationController
   end
     
   def edit_profile_form
+
+    the_id = @current_user.id
+
+    @matching_answers = Answer.where({ :owner => the_id })
+
+
+
     render({ :template => "user_authentication/edit_profile.html.erb" })
   end
 
