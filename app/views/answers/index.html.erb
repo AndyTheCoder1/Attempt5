@@ -17,9 +17,7 @@
 
 <div>
   <div>
-    <h2>
-      Add a New Answer
-    </h2>  
+    
 
     <form action="/insert_answer" method="post">
       <div>
@@ -33,7 +31,7 @@
 
       
       <button>
-        Post answer
+        Add Your Answer for Today
       </button>
 <hr>
         
@@ -131,17 +129,17 @@
             Decorate this Answer
           </a>
         </td>
-          <% if an_answer.owner.username == @current_user.username %>%
+          <% if an_answer.owner.username == @current_user.username %>
             <td>
-                <a href="/edit_user_profile">
+                <h4><a href="/edit_user_profile">
                   visit your profile
-                </a>
+                </a></h4>
             </td>
             <%else%>
               <td>
-                <a href="/user/<%= an_answer.owner.id %>">
-                  visit user profile
-                </a>
+                <h4><a href="/user/<%= an_answer.owner.id %>">
+                  visit <%=an_answer.owner.username%>'s' profile
+                </a></h4>
               </td>
             <%end%>
 
