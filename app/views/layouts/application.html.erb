@@ -17,12 +17,12 @@
 
   <body>
 
-    <li>
-          <a href="/">Home</a>
-          </li>
+  
        
         <% if @current_user == nil %>
-
+          <li>
+          <a href="/">Home</a>
+          </li>
           <li>
           <a href="/user_sign_in">Sign in</a>
           </li>
@@ -31,7 +31,12 @@
           </li>
 
         <% else %>
-        
+
+
+          <p style= "text-align:right;"> Welcome, <%= @current_user.username %> </p>
+          <li>
+          <a href="/">Home</a>
+          </li>
         
         <li>
           
@@ -43,8 +48,6 @@
           <a href="/answers">View Today's Question</a>
         </li>
 
-
-        Welcome, <%= @current_user.username %>
       
 
         <% end %>

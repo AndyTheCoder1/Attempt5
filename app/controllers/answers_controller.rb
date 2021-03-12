@@ -20,11 +20,11 @@ class AnswersController < ApplicationController
   def create
     the_answer = Answer.new
     the_answer.entry = params.fetch("query_entry")
-    the_answer.owner_id = params.fetch("query_owner_id")
-    the_answer.image = params.fetch("query_image")
-    the_answer.question_id = params.fetch("query_question_id")
-    the_answer.decoratations_count = params.fetch("query_decoratations_count")
-    the_answer.comments_count = params.fetch("query_comments_count")
+    the_answer.owner_id = session.fetch(:user_id)
+    #the_answer.image = params.fetch("query_image")
+    #the_answer.question_id = params.fetch("query_question_id")
+    #the_answer.decoratations_count = params.fetch("query_decoratations_count")
+    #the_answer.comments_count = params.fetch("query_comments_count")
 
     if the_answer.valid?
       the_answer.save
@@ -33,6 +33,8 @@ class AnswersController < ApplicationController
       redirect_to("/answers", { :notice => "Answer failed to create successfully." })
     end
   end
+
+
 
   def update
     the_id = params.fetch("path_id")

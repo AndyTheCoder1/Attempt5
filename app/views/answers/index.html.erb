@@ -19,7 +19,7 @@
 <div>
   <div>
     <h2>
-      Add a new answer
+      Add a New Answer
     </h2>  
 
     <form action="/insert_answer" method="post">
@@ -100,23 +100,12 @@
         </th>
 
         <th>
-          Question
-        </th>
-
-        <th>
           Decoratations count
         </th>
 
-        <th>
-          Comments count
-        </th>
 
         <th>
           Created at
-        </th>
-
-        <th>
-          Updated at
         </th>
 
         <th>
@@ -134,7 +123,7 @@
         </td>
 
         <td>
-          <%= an_answer.owner_id %>
+          <%= an_answer.owner.username %>
         </td>
 
         <td>
@@ -142,23 +131,14 @@
         </td>
 
         <td>
-          <%= an_answer.question_id %>
-        </td>
-
-        <td>
           <%= an_answer.decoratations_count %>
         </td>
 
-        <td>
-          <%= an_answer.comments_count %>
-        </td>
 
         <td>
           <%= time_ago_in_words(an_answer.created_at) %> ago
         </td>
-        <td>
-          <%= time_ago_in_words(an_answer.updated_at) %> ago
-        </td>
+      
 
         <td>
           <a href="/answers/<%= an_answer.id %>">
