@@ -20,7 +20,6 @@ class QuestionsController < ApplicationController
   def create
     the_question = Question.new
     the_question.question = params.fetch("query_question")
-    the_question.answers_count = params.fetch("query_answers_count")
 
     if the_question.valid?
       the_question.save
