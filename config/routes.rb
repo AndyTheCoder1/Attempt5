@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # READ
   get("/decoratations", { :controller => "decoratations", :action => "index" })
   
-  get("/decoratations/:path_id", { :controller => "decoratations", :action => "show" })
+  get("/decoratations/:path_id", { :controller => "decoratations", :action => "add" })
   
   # UPDATE
   
@@ -86,7 +86,7 @@ Rails.application.routes.draw do
   # READ
   get("/answers", { :controller => "answers", :action => "index" })
   
-  get("/answers/:path_id", { :controller => "answers", :action => "show" })
+  get("/answers/:path_id", { :controller => "answers", :action => "add" })
   
   # UPDATE
   

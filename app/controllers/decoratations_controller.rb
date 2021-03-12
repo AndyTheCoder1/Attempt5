@@ -1,4 +1,21 @@
 class DecoratationsController < ApplicationController
+  
+  def add
+
+    the_id = params.fetch("path_id")
+
+    matching_decoratations = Answer.where({ :id => the_id })
+
+    matching_decorations = matching_decorations + 1
+
+    matching_decorations.save
+
+    redirect_to("/answers", { :notice => "Decoratation created successfully." })
+
+
+  end
+  
+  
   def index
     matching_decoratations = Decoratation.all
 

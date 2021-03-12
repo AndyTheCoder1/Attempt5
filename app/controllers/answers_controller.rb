@@ -1,4 +1,20 @@
 class AnswersController < ApplicationController
+  
+    def add
+
+    the_id = params.fetch("path_id")
+
+    correct_answer = Answer.where({ :id => the_id }).at(0)
+
+    correct_answer.decoratations_count = correct_answer.decoratations_count + 1
+
+    correct_answer.save
+
+    redirect_to("/answers", { :notice => "Decoratation created successfully." })
+
+
+  end
+  
   def index
     matching_answers = Answer.all
 
@@ -23,7 +39,7 @@ class AnswersController < ApplicationController
     the_answer.owner_id = session.fetch(:user_id)
     #the_answer.image = params.fetch("query_image")
     #the_answer.question_id = params.fetch("query_question_id")
-    #the_answer.decoratations_count = params.fetch("query_decoratations_count")
+    the_answer.decoratations_count = 0
     #the_answer.comments_count = params.fetch("query_comments_count")
 
     if the_answer.valid?
