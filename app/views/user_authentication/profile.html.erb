@@ -18,6 +18,14 @@
         <th>
           posting Time
         </th>
+
+        <th>
+   
+        </th>
+
+        <th>
+          Question Answered
+        </th>
       </tr>
 
       <% @matching_answers.each do |an_answer| %>
@@ -32,6 +40,12 @@
 
         <td>
           <%= time_ago_in_words(an_answer.created_at) %> ago
+        </td>
+
+        <td>
+          <a href="/answers/<%= an_answer.id %>">
+            Decorate this Answer
+          </a>
         </td>
       </tr>
       <%end%>
