@@ -83,6 +83,14 @@
         <td>
           <%= time_ago_in_words(an_answer.created_at) %> ago
         </td>
+        <td>
+        </td>
+        
+        <td>
+          <a href="/delete_answer/<%= an_answer.id %>">
+            Delete this answer
+          </a>
+        </td>
       </tr>
       <%end%>
     </table>
