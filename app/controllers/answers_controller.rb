@@ -16,6 +16,11 @@ class AnswersController < ApplicationController
   end
   
   def index
+
+    the_id = rand(9..13)
+
+    @question = Question.where({ :id => the_id}).at(0)
+
     matching_answers = Answer.all
 
     @list_of_answers = matching_answers.order({ :created_at => :desc })
