@@ -24,6 +24,32 @@ class AnswersController < ApplicationController
 
   end
 
+     def add_p
+
+    the_id = params.fetch("path_id")
+
+    int_path = the_id.to_i
+
+    question = params.fetch("question_id")
+
+    user_the_id = params.fetch("owner_id")
+
+    correct_answer = Answer.where({ :id => the_id }).at(0)
+
+    correct_answer.decoratations_count = correct_answer.decoratations_count + 1
+
+    correct_answer.save
+
+    new_dec = Decoratation.new
+    new_dec.user_id = @current_user.id
+    new_dec.answer_id = int_path
+    new_dec.save
+
+    redirect_to("/user/#{user_the_id}", { :notice => "Decoratation created successfully." })
+    
+
+  end
+
   def yesterday
     the_id = params.fetch("path_id")
 

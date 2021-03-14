@@ -48,10 +48,27 @@
         
 
         <td>
-          <a href="/decorating/<%= an_answer.id %>">
-            Decorate this Answer
-          </a>
-        </td>
+                  <%@testing = 0%>
+              
+                  <%Decoratation.where({ :answer_id => an_answer.id }).each do |search|%>
+                    <%if search.user_id == @current_user.id%>
+                      <td>
+                      <a href="/undecorate_p/<%= search.id%>/<%=an_answer.question.id%>">
+                        Un-Decorate this Answer
+                      </a>
+                      </td>
+                      <%@testing = 1%>
+                      <%break%>
+                    <%end%>
+                  <%end%>
+                  <%if @testing == 0%>
+                    <td>
+                    <a href="/decorate_p/<%= an_answer.id%>/<%=an_answer.question.id%>/<%= an_answer.owner.id%>">
+                        Decorate this Answer
+                      </a>
+                    </td>
+                  <%end%>
+                  </td>
       </tr>
       <%end%>
     </table>
