@@ -11,6 +11,19 @@
       <h2 style="color:blue">
       <%=@question.question%>
       </h2>
+
+      <%@james = @question.id - 1%>
+
+      <form action="/yesterday/<%=@james%>" method="get">
+      <button>
+        View Yesterday's question
+      </button>
+      
+      <form action="/edit_user_profile" method="get">
+      <button >
+        Suggest a question for tomorrow
+      </button>
+        
 <hr>
 
 
@@ -36,6 +49,11 @@
       <button>
         Add Your Answer for Today
       </button>
+
+      </center>
+      
+
+      <center>
 <hr>
         
 

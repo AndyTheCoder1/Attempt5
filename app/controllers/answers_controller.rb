@@ -17,6 +17,18 @@ class AnswersController < ApplicationController
 
   end
 
+  def yesterday
+    the_id = params.fetch("path_id")
+
+    @question = Question.where({ :id => the_id}).at(0)
+
+    matching_answers = Answer.all
+
+    @list_of_answers = matching_answers.order({ :created_at => :desc })
+
+    render({ :template => "answers/index.html.erb" })
+  end
+
   def matching_index
 
     the_id = params.fetch("path_id")
@@ -33,13 +45,13 @@ class AnswersController < ApplicationController
   def index
     today = Date.today
 
-    question_number = today.day
+    test = today.day
 
-    question_number = question_number+22
+    question_number = test+17
 
     #the_id = rand(9..13)
 
-    @question = Question.where({ :id => 23}).at(0)
+    @question = Question.where({ :id => question_number}).at(0)
 
     matching_answers = Answer.all
 
