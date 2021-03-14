@@ -123,6 +123,7 @@
             <tr>
               <%if an_answer.question != nil%>
                 <% if an_answer.question.id == @question.id%>
+                  
                   <td>
                     <%= an_answer.entry %>
                   </td>
@@ -139,14 +140,27 @@
                   <td>
                     <%= time_ago_in_words(an_answer.created_at) %> ago
                   </td>
-                
 
-                
-                  <td>
+                  <%@testing = 0%>
+              
+                  <%Decoratation.where({ :answer_id => an_answer.id }).each do |search|%>
+                    <%if search.user_id == @current_user.id%>
+                      <td>
+                      <a href="/decorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
+                        Un-Decorate this Answer
+                      </a>
+                      </td>
+                      <%@testing = 1%>
+                    <%end%>
+                  <%end%>
+                  <%if @testing == 0%>
+                    <td>
                     <a href="/decorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
-                      Decorate this Answer
-                    </a>
-                  </td>
+                        Decorate this Answer
+                      </a>
+                    </td>
+                  <%end%>
+
                     <% if an_answer.owner.username == @current_user.username %>
                       <td>
                           <h4><a href="/edit_user_profile">
@@ -269,11 +283,16 @@
 
         
         </tr>
+
+          
           
             <% @list_of_answers.each do |an_answer| %>
             <tr>
               <%if an_answer.question != nil%>
                 <% if an_answer.question.id == @question.id%>
+                  <td>
+                  <%=Decoratation.where({ :id => an_answer.id }).at(0)%>
+                  </td>
                   <td>
                     <%= an_answer.entry %>
                   </td>
@@ -294,6 +313,8 @@
 
                 
                   <td>
+
+
                     <a href="/decorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
                       Decorate this Answer
                     </a>
