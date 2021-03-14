@@ -48,6 +48,21 @@ class UserAuthenticationController < ApplicationController
     render({ :template => "user_authentication/sign_up.html.erb" })
   end
 
+  def create_admin
+
+    user = session.fetch(:user_id)
+
+    correct_user = User.where({ :id => user }).at(0)
+    
+    correct_user.admin = true
+
+    correct_user.save
+
+    redirect_to("/edit_user_profile", { :notice => "You are now and admin" })
+    
+    
+  end
+
   def create
     @user = User.new
     @user.email = params.fetch("query_email")

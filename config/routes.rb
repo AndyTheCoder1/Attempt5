@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   
-  
+  post("/createadmin", { :controller => "user_authentication", :action => "create_admin" })
   
   get("/modify_answer/:path_id", { :controller => "answers", :action => "update" })
 
@@ -132,6 +132,10 @@ Rails.application.routes.draw do
   
   # SIGN OUT        
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })
+
+  
+
+  
              
   #------------------------------
 
