@@ -39,6 +39,24 @@
   </div>
 </div>
 
+
+<% if @user.admin == true %>
+<div>
+<h4>You've been accepted as an admin, so you can add questions</h4>
+    <form action="/insert_question" method="post">
+      <div>
+        <label for="entry_box">
+        </label>
+
+        <textarea id="entry_box" name="query_question" rows="3"></textarea>
+      </div>
+      <button>
+        add question
+      </button>
+<%end%>
+
+
+
 <hr>
 <br>
 <h1>Your Answers to Date</h1>

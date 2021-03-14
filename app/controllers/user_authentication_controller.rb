@@ -73,7 +73,7 @@ class UserAuthenticationController < ApplicationController
 
     @matching_answers = Answer.where({ :owner => the_id })
 
-
+    @user = User.where({ :id => the_id}).at(0)
 
     render({ :template => "user_authentication/edit_profile.html.erb" })
   end
