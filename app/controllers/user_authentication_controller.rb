@@ -116,7 +116,6 @@ class UserAuthenticationController < ApplicationController
     @user.password_confirmation = params.fetch("query_password_confirmation")
     @user.username = params.fetch("query_username")
     @user.admin = params.fetch("query_admin", false)
-    @user.follow_requests_sent_count = params.fetch("query_follow_requests_sent_count")
     
     if @user.valid?
       @user.save

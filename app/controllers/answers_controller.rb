@@ -20,9 +20,9 @@ class AnswersController < ApplicationController
     new_dec.save
 
     redirect_to("/answers/#{question}", { :notice => "Decoratation created successfully." })
-    
+    end
 
-  end
+
 
      def add_p
 

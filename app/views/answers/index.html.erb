@@ -12,6 +12,8 @@
       <%=@question.question%>
       </h2>
 
+      
+
       <%@james = @question.id - 1%>
 
       <%@count= 1%>
@@ -291,7 +293,7 @@
             <tr>
               <%if an_answer.question != nil%>
                 <% if an_answer.question.id == @question.id%>
-                  <%=Decoratation.where({ :id => an_answer.id }).at(0)%>
+                  <%Decoratation.where({ :id => an_answer.id }).at(0)%>
                   <td>
                     <%= an_answer.entry %>
                   </td>
