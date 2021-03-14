@@ -43,7 +43,7 @@ class AnswersController < ApplicationController
     the_answer.entry = params.fetch("query_entry")
     the_answer.owner_id = session.fetch(:user_id)
     #the_answer.image = params.fetch("query_image")
-    #the_answer.question_id = params.fetch("query_question_id")
+    the_answer.question_id = params.fetch("question_id")
     the_answer.decoratations_count = 0
     #the_answer.comments_count = params.fetch("query_comments_count")
 
