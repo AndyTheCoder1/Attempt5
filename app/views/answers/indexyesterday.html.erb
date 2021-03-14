@@ -1,5 +1,3 @@
-
-
 <center>
 <div>
   <div>
@@ -16,7 +14,7 @@
 
       <form action="/yesterday/<%=@james%>" method="get">
       <button>
-        View Yesterday's question
+        View the previous day's question
       </button>
       </form>
       
@@ -30,26 +28,7 @@
 
 <div>
   <div>
-    
-
-    <form action="/insert_answer" method="post">
-      <div>
-        <label for="entry_box">
-        </label>
-
-        
-
-        <textarea id="entry_box" name="query_entry" rows="3"></textarea>
-        <label for="question_id">
-        </label>
-        
-        <input id="question_id" type="hidden" value="<%= @question.id %>" name="question_id">
-      </div>
-
-      
-      <button>
-        Add Your Answer for Today
-      </button>
+  
 
       </center>
       

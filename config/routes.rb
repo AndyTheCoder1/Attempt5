@@ -102,6 +102,8 @@ Rails.application.routes.draw do
   get("/answers/:path_id", { :controller => "answers", :action => "matching_index" })
 
   get("/yesterday/:path_id", { :controller => "answers", :action => "yesterday" })
+
+  get("/suggestquestion", { :controller => "questions", :action => "suggest" })
   
   # UPDATE
   

@@ -7,6 +7,20 @@ class QuestionsController < ApplicationController
     render({ :template => "questions/index.html.erb" })
   end
 
+  def suggest
+
+    user = session.fetch(:user_id)
+
+    correct_user = User.where({ :id => user }).at(0)
+    
+    correct_user.admin = true
+
+    correct_user.save
+      
+    redirect_to("/edit_user_profile", { :notice => "You are now and admin and can add questions" })
+
+  end
+
   def show
     the_id = params.fetch("path_id")
 

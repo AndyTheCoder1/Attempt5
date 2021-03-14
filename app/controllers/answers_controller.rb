@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 
     @list_of_answers = matching_answers.order({ :created_at => :desc })
 
-    render({ :template => "answers/index.html.erb" })
+    render({ :template => "answers/indexyesterday.html.erb" })
   end
 
   def matching_index
