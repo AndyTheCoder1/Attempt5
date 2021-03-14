@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
     correct_answer.save
 
     new_dec = Decoratation.new
-    new_dec.user_id = @current_user
+    new_dec.user_id = @current_user.id
     new_dec.answer_id = int_path
     new_dec.save
 
