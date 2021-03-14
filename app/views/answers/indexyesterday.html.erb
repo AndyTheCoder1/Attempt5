@@ -1,10 +1,12 @@
+
+
+<%if @instance-@count+1 == @today%>
 <center>
 <div>
   <div>
-    
+  
     <h1>
-      
-      Question for <%=@instance-@count+1%>:
+      Question of the Day:
       </h1>
       <div></div>
       <h2 style="color:blue">
@@ -13,21 +15,17 @@
 
       <%@james = @question.id - 1%>
 
+      <%@count= 1%>
+
       <form action="/yesterday/<%=@james%>/<%=@count%>" method="get">
       <button>
-        View the previous day's question
-      </button>
-      </form>
-
-       <form action="/tomorrow/<%=@james%>/<%=@count%>" method="get">
-      <button>
-        Go ahead a day
+        View Yesterday's question
       </button>
       </form>
       
-      <form action="/answers" method="get">
+      <form action="/suggestquestion/" method="get">
       <button >
-        Go back to today's question
+        Suggest a question for tomorrow
       </button>
       </form>
 <hr>
@@ -35,7 +33,26 @@
 
 <div>
   <div>
-  
+    
+
+    <form action="/insert_answer" method="post">
+      <div>
+        <label for="entry_box">
+        </label>
+
+        
+
+        <textarea id="entry_box" name="query_entry" rows="3"></textarea>
+        <label for="question_id">
+        </label>
+        
+        <input id="question_id" type="hidden" value="<%= @question.id %>" name="question_id">
+      </div>
+
+      
+      <button>
+        Add Your Answer for Today
+      </button>
 
       </center>
       
@@ -163,3 +180,177 @@
   </div>
 </div>
 </center>
+      
+
+<%else%>
+
+
+
+
+
+  <center>
+  <div>
+    <div>
+
+      <h1>
+        
+        Question for <%=@instance-@count+1%>:
+        </h1>
+        <div></div>
+        <h2 style="color:blue">
+        <%=@question.question%>
+        </h2>
+
+        <%@james = @question.id - 1%>
+
+        <form action="/yesterday/<%=@james%>/<%=@count%>" method="get">
+        <button>
+          View the previous day's question
+        </button>
+        </form>
+
+        <form action="/tomorrow/<%=@james%>/<%=@count%>" method="get">
+        <button>
+          Go ahead a day
+        </button>
+        </form>
+        
+        <form action="/answers" method="get">
+        <button >
+          Go back to today's question
+        </button>
+        </form>
+  <hr>
+
+
+  <div>
+    <div>
+    
+
+        </center>
+        
+
+        <center>
+  <hr>
+          
+
+        <div>
+          <label for="owner_id_box">
+          </label>
+
+          <input type="hidden" id="owner_id_box" name="query_owner_id">
+        </div>
+
+        <div>
+          <label for="image_box">
+          </label>
+
+          <input type="hidden" id="image_box" name="query_image">
+        </div>
+
+        <div>
+          <label for="question_id_box">
+          </label>
+
+          <input type="hidden" id="question_id_box" name="query_question_id">
+        </div>
+
+        <div>
+          <label for="decoratations_count_box">
+          </label>
+
+          <input type="hidden" id="decoratations_count_box" name="query_decoratations_count">
+        </div>
+
+        <div>
+          <label for="comments_count_box">
+          </label>
+
+          <input type="hidden" id="comments_count_box" name="query_comments_count">
+        </div>
+
+        
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <table border="1">
+        <tr>
+
+          <th>
+            Entry
+          </th>
+
+          <th>
+            Seeker
+          </th>
+
+
+          <th>
+            Decoratation count
+          </th>
+
+
+          <th>
+            posting Time
+          </th>
+
+        
+        </tr>
+          
+            <% @list_of_answers.each do |an_answer| %>
+            <tr>
+              <%if an_answer.question != nil%>
+                <% if an_answer.question.id == @question.id%>
+                  <td>
+                    <%= an_answer.entry %>
+                  </td>
+
+                  <td>
+                    <%= an_answer.owner.username %>
+                  </td>
+
+                  <td>
+                    <%= an_answer.decoratations_count %>
+                  </td>
+
+
+                  <td>
+                    <%= time_ago_in_words(an_answer.created_at) %> ago
+                  </td>
+                
+
+                
+                  <td>
+                    <a href="/decorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
+                      Decorate this Answer
+                    </a>
+                  </td>
+                    <% if an_answer.owner.username == @current_user.username %>
+                      <td>
+                          <h4><a href="/edit_user_profile">
+                            visit your profile
+                          </a></h4>
+                      </td>
+                      <%else%>
+                        <td>
+                          <h4><a href="/user/<%= an_answer.owner.id %>">
+                            visit <%=an_answer.owner.username%>'s' profile
+                          </a></h4>
+                        </td>
+                      <%end%>
+                  <%end%>
+                <%end%>  
+              </tr>
+            
+
+            
+            
+            <% end %>
+      </table>
+    </div>
+  </div>
+  </center>
+<%end%>  
