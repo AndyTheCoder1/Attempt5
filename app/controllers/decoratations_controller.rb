@@ -30,7 +30,24 @@ class DecoratationsController < ApplicationController
 
   end
 
-  
+  def delete_p
+
+    the_id = params.fetch("path_id")
+    found = Decoratation.where({ :id => the_id}).at(0)
+    
+    found.destroy
+
+    user_user = params.fetch("owner_id")
+    @question = params.fetch("question_id")
+
+
+
+    redirect_to("/user/#{user_user}", { :notice => "Decoratation removed successfully." })
+    
+
+  end
+
+
 
   def added
 

@@ -103,7 +103,7 @@ Rails.application.routes.draw do
 
   get("/decorate_p/:path_id/:question_id/:owner_id", { :controller => "answers", :action => "add_p" })
 
-  get("/undecorate_p/:path_id/:question_id", { :controller => "decoratations", :action => "delete" })
+  get("/undecorate_p/:path_id/:question_id/:owner_id", { :controller => "decoratations", :action => "delete_p" })
 
   get("/answers/:path_id", { :controller => "answers", :action => "matching_index" })
 
