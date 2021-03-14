@@ -151,6 +151,7 @@
                       </a>
                       </td>
                       <%@testing = 1%>
+                      <%break%>
                     <%end%>
                   <%end%>
                   <%if @testing == 0%>
@@ -159,6 +160,7 @@
                         Decorate this Answer
                       </a>
                     </td>
+                    <%return%>
                   <%end%>
 
                     <% if an_answer.owner.username == @current_user.username %>
