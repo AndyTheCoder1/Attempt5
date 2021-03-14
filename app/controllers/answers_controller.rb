@@ -20,11 +20,20 @@ class AnswersController < ApplicationController
   def yesterday
     the_id = params.fetch("path_id")
 
+    count = params.fetch("count")
+
+    @count = count.to_i + 1
+
+    @instance = Date.today
+
     @question = Question.where({ :id => the_id}).at(0)
 
     matching_answers = Answer.all
 
     @list_of_answers = matching_answers.order({ :created_at => :desc })
+
+    @today = Date.today
+
 
     render({ :template => "answers/indexyesterday.html.erb" })
   end
@@ -44,6 +53,8 @@ class AnswersController < ApplicationController
   
   def index
     today = Date.today
+
+    @instance = Date.today
 
     test = today.day
 

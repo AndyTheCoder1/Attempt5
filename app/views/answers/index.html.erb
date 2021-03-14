@@ -14,13 +14,15 @@
 
       <%@james = @question.id - 1%>
 
-      <form action="/yesterday/<%=@james%>" method="get">
+      <%@count= 1%>
+
+      <form action="/yesterday/<%=@james%>/<%=@count%>" method="get">
       <button>
         View Yesterday's question
       </button>
       </form>
       
-      <form action="/suggestquestion" method="get">
+      <form action="/suggestquestion/" method="get">
       <button >
         Suggest a question for tomorrow
       </button>

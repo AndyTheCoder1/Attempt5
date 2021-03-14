@@ -3,7 +3,7 @@
   <div>
   
     <h1>
-      Question of the Day:
+      Question for <%=@instance-@count%>:
       </h1>
       <div></div>
       <h2 style="color:blue">
@@ -12,15 +12,15 @@
 
       <%@james = @question.id - 1%>
 
-      <form action="/yesterday/<%=@james%>" method="get">
+      <form action="/yesterday/<%=@james%>/<%=@count%>" method="get">
       <button>
         View the previous day's question
       </button>
       </form>
       
-      <form action="/suggestquestion" method="get">
+      <form action="/answers" method="get">
       <button >
-        Suggest a question for tomorrow
+        Go back to today's question
       </button>
       </form>
 <hr>
