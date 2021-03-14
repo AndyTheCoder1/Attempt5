@@ -146,7 +146,7 @@
                   <%Decoratation.where({ :answer_id => an_answer.id }).each do |search|%>
                     <%if search.user_id == @current_user.id%>
                       <td>
-                      <a href="/undecorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
+                      <a href="/undecorate/<%= search.id%>/<%=an_answer.question.id%>">
                         Un-Decorate this Answer
                       </a>
                       </td>
