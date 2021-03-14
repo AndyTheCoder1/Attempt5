@@ -15,6 +15,8 @@ class DecoratationsController < ApplicationController
 
   end
 
+  
+
   def added
 
     the_id = params.fetch("path_id")

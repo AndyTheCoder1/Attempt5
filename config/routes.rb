@@ -95,7 +95,9 @@ Rails.application.routes.draw do
   # READ
   get("/answers", { :controller => "answers", :action => "index" })
   
-  get("/answers/:path_id", { :controller => "answers", :action => "add" })
+  get("/decorate/:path_id/:question_id", { :controller => "answers", :action => "add" })
+
+  get("/answers/:path_id", { :controller => "answers", :action => "matching_index" })
   
   # UPDATE
   

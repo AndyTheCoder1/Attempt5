@@ -4,15 +4,30 @@ class AnswersController < ApplicationController
 
     the_id = params.fetch("path_id")
 
+    question = params.fetch("question_id")
+
     correct_answer = Answer.where({ :id => the_id }).at(0)
 
     correct_answer.decoratations_count = correct_answer.decoratations_count + 1
 
     correct_answer.save
 
-    redirect_to("/answers", { :notice => "Decoratation created successfully." })
+    redirect_to("/answers/#{question}", { :notice => "Decoratation created successfully." })
 
 
+  end
+
+  def matching_index
+
+    the_id = params.fetch("path_id")
+
+    @question = Question.where({ :id => the_id}).at(0)
+
+    matching_answers = Answer.all
+
+    @list_of_answers = matching_answers.order({ :created_at => :desc })
+
+    render({ :template => "answers/index.html.erb" })
   end
   
   def index
