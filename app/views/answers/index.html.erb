@@ -104,54 +104,56 @@
 
        
       </tr>
-
-      <% @list_of_answers.each do |an_answer| %>
-      <tr>
-        <% if an_answer.question.id == @question.id%>
-          <td>
-            <%= an_answer.entry %>
-          </td>
-
-          <td>
-            <%= an_answer.owner.username %>
-          </td>
-
-          <td>
-            <%= an_answer.decoratations_count %>
-          </td>
-
-
-          <td>
-            <%= time_ago_in_words(an_answer.created_at) %> ago
-          </td>
         
-
-        
-          <td>
-            <a href="/decorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
-              Decorate this Answer
-            </a>
-          </td>
-            <% if an_answer.owner.username == @current_user.username %>
-              <td>
-                  <h4><a href="/edit_user_profile">
-                    visit your profile
-                  </a></h4>
-              </td>
-              <%else%>
+          <% @list_of_answers.each do |an_answer| %>
+          <tr>
+            <%if an_answer.question != nil%>
+              <% if an_answer.question.id == @question.id%>
                 <td>
-                  <h4><a href="/user/<%= an_answer.owner.id %>">
-                    visit <%=an_answer.owner.username%>'s' profile
-                  </a></h4>
+                  <%= an_answer.entry %>
                 </td>
-              <%end%>
-            <%end%>
-        </tr>
-      
 
-      
-      
-      <% end %>
+                <td>
+                  <%= an_answer.owner.username %>
+                </td>
+
+                <td>
+                  <%= an_answer.decoratations_count %>
+                </td>
+
+
+                <td>
+                  <%= time_ago_in_words(an_answer.created_at) %> ago
+                </td>
+              
+
+              
+                <td>
+                  <a href="/decorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
+                    Decorate this Answer
+                  </a>
+                </td>
+                  <% if an_answer.owner.username == @current_user.username %>
+                    <td>
+                        <h4><a href="/edit_user_profile">
+                          visit your profile
+                        </a></h4>
+                    </td>
+                    <%else%>
+                      <td>
+                        <h4><a href="/user/<%= an_answer.owner.id %>">
+                          visit <%=an_answer.owner.username%>'s' profile
+                        </a></h4>
+                      </td>
+                    <%end%>
+                <%end%>
+              <%end%>  
+            </tr>
+          
+
+          
+          
+          <% end %>
     </table>
   </div>
 </div>

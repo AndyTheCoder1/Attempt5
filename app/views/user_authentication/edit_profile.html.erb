@@ -41,6 +41,7 @@
 
 
 <% if @user.admin == true %>
+    <hr>
     <div>
     <h4>You've been accepted as an admin, so you can add questions</h4>
         <form action="/insert_question" method="post">
@@ -54,8 +55,11 @@
             add question
           </button>
           </form>
+          <div></div>
+          <br>
+          <hr>
 
-            <h4>We get it, being an admin is a lot of pressure. If you no longer want to be an admin, check the box below and hit submit.</h4> 
+            <i>We get it, being an admin is a lot of pressure. If you no longer want to be an admin, check the box below and hit submit.</i> 
           <div>
           <form action="/forfitadmin" method="post">
           <label for="admin_box">Check this to forfeit admin status</label>
@@ -66,6 +70,7 @@
         </div>
 
     <%else%>
+    <hr>
     <h4>You haven't applied to be an admin, so you can't add questions.</h4> 
     <div>
     <form action="/createadmin" method="post">

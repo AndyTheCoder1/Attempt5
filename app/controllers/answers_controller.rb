@@ -35,11 +35,11 @@ class AnswersController < ApplicationController
 
     question_number = today.day
 
-    question_number = question_number-1
+    question_number = question_number+22
 
     #the_id = rand(9..13)
 
-    @question = Question.where({ :id => question_number}).at(0)
+    @question = Question.where({ :id => 23}).at(0)
 
     matching_answers = Answer.all
 
