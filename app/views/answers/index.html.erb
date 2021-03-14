@@ -160,7 +160,6 @@
                         Decorate this Answer
                       </a>
                     </td>
-                    <%return%>
                   <%end%>
 
                     <% if an_answer.owner.username == @current_user.username %>
@@ -315,11 +314,26 @@
 
                 
                   <td>
-
-
+                  <%@testing = 0%>
+              
+                  <%Decoratation.where({ :answer_id => an_answer.id }).each do |search|%>
+                    <%if search.user_id == @current_user.id%>
+                      <td>
+                      <a href="/undecorate/<%= search.id%>/<%=an_answer.question.id%>">
+                        Un-Decorate this Answer
+                      </a>
+                      </td>
+                      <%@testing = 1%>
+                      <%break%>
+                    <%end%>
+                  <%end%>
+                  <%if @testing == 0%>
+                    <td>
                     <a href="/decorate/<%= an_answer.id%>/<%=an_answer.question.id%>">
-                      Decorate this Answer
-                    </a>
+                        Decorate this Answer
+                      </a>
+                    </td>
+                  <%end%>
                   </td>
                     <% if an_answer.owner.username == @current_user.username %>
                       <td>
