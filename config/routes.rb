@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   
   post("/createadmin", { :controller => "user_authentication", :action => "create_admin" })
+
+  post("/forfitadmin", { :controller => "user_authentication", :action => "forfit_admin" })
   
   get("/modify_answer/:path_id", { :controller => "answers", :action => "update" })
 
