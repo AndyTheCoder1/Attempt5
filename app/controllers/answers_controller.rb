@@ -4,6 +4,8 @@ class AnswersController < ApplicationController
 
     the_id = params.fetch("path_id")
 
+    int_path = the_id.to_i
+
     question = params.fetch("question_id")
 
     correct_answer = Answer.where({ :id => the_id }).at(0)
@@ -12,8 +14,13 @@ class AnswersController < ApplicationController
 
     correct_answer.save
 
-    redirect_to("/answers/#{question}", { :notice => "Decoratation created successfully." })
+    new_dec = Decoratation.new
+    new_dec.user_id = @current_user
+    new_dec.answer_id = int_path
+    new_dec.save
 
+    redirect_to("/answers/#{question}", { :notice => "Decoratation created successfully." })
+    
 
   end
 
