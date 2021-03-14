@@ -99,6 +99,8 @@ Rails.application.routes.draw do
   
   get("/decorate/:path_id/:question_id", { :controller => "answers", :action => "add" })
 
+   get("/undecorate/:path_id/:question_id", { :controller => "decoratations", :action => "delete" })
+
   get("/answers/:path_id", { :controller => "answers", :action => "matching_index" })
 
   get("/yesterday/:path_id/:count", { :controller => "answers", :action => "yesterday" })
