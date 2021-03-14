@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action(:load_current_user)
-
+  
+  require "date"
   
   
   # Uncomment this if you want to force users to sign in before any other actions
