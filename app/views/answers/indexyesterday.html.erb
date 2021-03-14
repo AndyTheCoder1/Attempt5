@@ -1,9 +1,10 @@
 <center>
 <div>
   <div>
-  
+    
     <h1>
-      Question for <%=@instance-@count%>:
+      
+      Question for <%=@instance-@count+1%>:
       </h1>
       <div></div>
       <h2 style="color:blue">
@@ -15,6 +16,12 @@
       <form action="/yesterday/<%=@james%>/<%=@count%>" method="get">
       <button>
         View the previous day's question
+      </button>
+      </form>
+
+       <form action="/tomorrow/<%=@james%>/<%=@count%>" method="get">
+      <button>
+        Go ahead a day
       </button>
       </form>
       

@@ -38,6 +38,31 @@ class AnswersController < ApplicationController
     render({ :template => "answers/indexyesterday.html.erb" })
   end
 
+
+  def tomorrow
+    the_id = params.fetch("path_id")
+
+    count = params.fetch("count")
+
+    @count = count.to_i - 1
+
+    @instance = Date.today
+
+    update = the_id.to_i+2
+
+    @question = Question.where({ :id => update}).at(0)
+
+    matching_answers = Answer.all
+
+    @list_of_answers = matching_answers.order({ :created_at => :desc })
+
+    @today = Date.today
+
+
+    render({ :template => "answers/indexyesterday.html.erb" })
+  end
+
+
   def matching_index
 
     the_id = params.fetch("path_id")

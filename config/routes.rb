@@ -103,6 +103,8 @@ Rails.application.routes.draw do
 
   get("/yesterday/:path_id/:count", { :controller => "answers", :action => "yesterday" })
 
+  get("/tomorrow/:path_id/:count", { :controller => "answers", :action => "tomorrow" })
+
   get("/suggestquestion", { :controller => "questions", :action => "suggest" })
   
   # UPDATE
