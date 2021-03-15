@@ -4,7 +4,7 @@ class FollowRequestsController < ApplicationController
   def view
     the_id = params.fetch("path_id")
 
-    matching_follow_requests = FollowRequest.where({ :sender_id => the_id })
+    matching_follow_requests = FollowRequest.where({ :recipient_id => the_id })
 
     if matching_follow_requests.count == 0
       redirect_to("/user/#{the_id}", { :notice => "this user is following no one"} )
