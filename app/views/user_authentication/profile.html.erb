@@ -1,7 +1,12 @@
 <h1><%=@correct_user.username%>'s Diary</h1>
 
 <%@all = FollowRequest.where(:recipient_id => @correct_user.id) %>
+<%@all_following = FollowRequest.where(:sender_id => @correct_user.id) %>
 
+
+
+
+<h3> <%=@correct_user.username%> is following <%=@all_following.count%> people </h3>
 
 <h3> <%=@correct_user.username%> has <%=@all.count%> followers </h3>
 
