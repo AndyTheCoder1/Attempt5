@@ -8,11 +8,11 @@
 <%@all_following = FollowRequest.where(:sender_id => @current_user.id) %>
 
 <a href="/viewfollowing/<%=@current_user.id%>">
-  You are following <%=@all_following.count%> people</a>
+  You are following <%=@all.count%> people</a>
   <br>
 
 <a href="/viewfollowers/<%=@current_user.id%>">
-  You have <%=@all.count%> followers </a>
+  You have <%=@all_following.count%> followers </a>
 
 
 <h1> </h1>
