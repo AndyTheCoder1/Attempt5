@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+
+
+   get("/edituseraccount", { :controller => "user_authentication", :action => "editing" })
+
+  
   
   post("/createadmin", { :controller => "user_authentication", :action => "create_admin" })
 

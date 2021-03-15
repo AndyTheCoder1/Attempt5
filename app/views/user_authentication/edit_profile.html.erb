@@ -1,90 +1,3 @@
-<div >
-  <h3>
-    Edit User Account
-  </h3>
-
-  <div>
-    <form action="/modify_user" method="post">
-      <div>
-        <label for="email_box">Email</label>
-        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
-      </div>
-      <div>
-        <label for="username_box">Username</label>
-        <input id="username_box" name="query_username" value="<%= @current_user.username %>">
-      </div>
-
-      <div>
-        <label for="password_box">Password</label>
-        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-      </div>
-    
-      <div>
-        <label for="password_confirmation_box">Password Confirmation</label>
-        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-      </div>
-<br>
-      <button>
-        Update account
-      </button>
-
-     
-    
-    </form>
-<div>
-  <div>
-  <br>
-
-    Or, <a href="/cancel_user_account"> delete your account</a> instead.
-  </div>
-</div>
-
-
-<% if @user.admin == true %>
-    <hr>
-    <div>
-    <h4>You've been accepted as an admin, so you can add questions</h4>
-        <form action="/insert_question" method="post">
-          <div>
-            <label for="entry_box">
-            </label>
-
-            <textarea id="entry_box" name="query_question" rows="3"></textarea>
-          </div>
-          <button>
-            add question
-          </button>
-          </form>
-          <div></div>
-          <br>
-          <hr>
-
-            <i>We get it, being an admin is a lot of pressure. If you no longer want to be an admin, check the box below and hit submit.</i> 
-          <div>
-          <form action="/forfitadmin" method="post">
-          <label for="admin_box">Check this to forfeit admin status</label>
-          <input id="admin_box" name="query_admin" type="checkbox">
-          <button>
-          forfeit
-        </button>
-        </div>
-
-    <%else%>
-    <hr>
-    <h4>You haven't applied to be an admin, so you can't add questions.</h4> 
-    <div>
-    <form action="/createadmin" method="post">
-    <div>
-    <label for="admin_box">Check this to apply to be an admin</label>
-    <input id="admin_box" name="query_admin" type="checkbox">
-  </div>
-    <button>
-    Apply
-  </button>
-  </div>
-<%end%>
-
-
 
 <hr>
 <br>
@@ -144,3 +57,63 @@
     </table>
   </div>
 </div>
+
+
+
+<hr>
+<% if @user.admin == true %>
+    <hr>
+    <div>
+    <h4>You've been accepted as an admin, so you can add questions</h4>
+        <form action="/insert_question" method="post">
+          <div>
+            <label for="entry_box">
+            </label>
+
+            <textarea id="entry_box" name="query_question" rows="3"></textarea>
+          </div>
+          <button>
+            add question
+          </button>
+          </form>
+          <div></div>
+          <br>
+
+            <i>We get it, being an admin is a lot of pressure. If you no longer want to be an admin, check the box below and hit submit.</i> 
+          <div>
+          <form action="/forfitadmin" method="post">
+          <label for="admin_box">Check this to forfeit admin status</label>
+          <input id="admin_box" name="query_admin" type="checkbox">
+          <button>
+          forfeit
+        </button>
+        </form>
+        </div>
+
+    <%else%>
+    <hr>
+    <h4>You haven't applied to be an admin, so you can't add questions.</h4> 
+    <div>
+    <form action="/createadmin" method="post">
+    <div>
+    <label for="admin_box">Check this to apply to be an admin</label>
+    <input id="admin_box" name="query_admin" type="checkbox">
+    
+  </div>
+    <button>
+    Apply
+  </button>
+  </form>
+  </div>
+<%end%>
+
+ <hr>
+
+<form action="/edituseraccount" method="get">
+          
+          <button>
+          Edit your user account
+        </button>
+</form>
+
+

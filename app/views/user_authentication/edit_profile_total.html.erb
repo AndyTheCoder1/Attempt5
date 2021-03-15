@@ -1,0 +1,40 @@
+<div >
+  <h3>
+    Edit User Account
+  </h3>
+
+  <div>
+    <form action="/modify_user" method="post">
+      <div>
+        <label for="email_box">Email</label>
+        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
+      </div>
+      <div>
+        <label for="username_box">Username</label>
+        <input id="username_box" name="query_username" value="<%= @current_user.username %>">
+      </div>
+
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+      </div>
+<br>
+      <button>
+        Update account
+      </button>
+
+     
+    
+    </form>
+<div>
+  <div>
+  <br>
+
+    Or, <a href="/cancel_user_account"> delete your account</a> instead.
+  </div>
+</div>
