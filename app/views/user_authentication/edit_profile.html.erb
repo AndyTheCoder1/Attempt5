@@ -7,10 +7,13 @@
 <%@all = FollowRequest.where(:recipient_id => @current_user.id) %>
 <%@all_following = FollowRequest.where(:sender_id => @current_user.id) %>
 
+<a href="/viewfollowing/<%=@current_user.id%>">
+  You are following <%=@all_following.count%> people</a>
+  <br>
 
+<a href="/viewfollowers/<%=@current_user.id%>">
+  You have <%=@all.count%> followers </a>
 
-
-<i> You are following <%=@all_following.count%> people... and you have <%=@all.count%> followers </i>
 
 <h1> </h1>
 
