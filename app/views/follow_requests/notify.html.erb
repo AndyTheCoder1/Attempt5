@@ -1,0 +1,19 @@
+ 
+ 
+ 
+ 
+ <table border="1">
+        <tr>
+
+          <th>
+            new followers
+          </th>
+                  </tr>
+
+                  <%@the_follow_request.each do |person|%>
+                  <tr>
+                    <td>
+                    <%=person.sender.username%>
+                    </td>
+                  </tr>
+                  <%end%>

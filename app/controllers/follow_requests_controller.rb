@@ -1,15 +1,27 @@
 class FollowRequestsController < ApplicationController
   
+  def notifications
+
+      the_id = @current_user.id
+
+      matching_follow_requests = FollowRequest.where({ :recipient_id => the_id })
+
+      @the_follow_request = matching_follow_requests
+      
+    render({ :template => "follow_requests/notify.html.erb" })
+
+  end
+
 
   def view
-    the_id = params.fetch("path_id")
+      the_id = params.fetch("path_id")
 
-    matching_follow_requests = FollowRequest.where({ :sender_id => the_id })
+      matching_follow_requests = FollowRequest.where({ :sender_id => the_id })
 
-    if matching_follow_requests.count == 0
-      redirect_to("/user/#{the_id}", { :notice => "this user is following no one"} )
-    else
-      @the_follow_request = matching_follow_requests
+      if matching_follow_requests.count == 0
+        redirect_to("/user/#{the_id}", { :notice => "this user is following no one"} )
+      else
+        @the_follow_request = matching_follow_requests
 
       render({ :template => "follow_requests/show.html.erb" })
     end
