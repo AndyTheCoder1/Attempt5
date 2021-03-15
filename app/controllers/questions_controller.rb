@@ -1,4 +1,17 @@
 class QuestionsController < ApplicationController
+  def alltopics
+
+    render({ :template => "questions/topics.html.erb" })
+  end
+
+
+  def comingsoon
+
+    render({ :template => "questions/comingsoon.html.erb" })
+  end
+  
+  
+  
   def index
     matching_questions = Question.all
 

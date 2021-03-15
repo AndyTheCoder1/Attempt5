@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+  get("/topics", { :controller => "questions", :action => "alltopics" })
+
+  get("/comingsoon", { :controller => "questions", :action => "comingsoon" })
+
+
   get("/notifications", { :controller => "follow_requests", :action => "notifications" })
 
   get("/notifications", { :controller => "follow_requests", :action => "notifications" })
