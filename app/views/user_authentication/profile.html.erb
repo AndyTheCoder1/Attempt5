@@ -39,6 +39,7 @@
   <%end%>
  <%end%>
  <%if testing == 0%>
+  <%if @correct_user != @current_user%>
     <form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="post">
           
           <button>
@@ -49,6 +50,7 @@
 
         <hr>
     </form>
+  <%end%>
 <%end%>
 
 
