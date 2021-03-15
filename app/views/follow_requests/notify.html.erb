@@ -8,12 +8,20 @@
           <th>
             new followers
           </th>
+          <th>
+            Time Followed
+          </th>
+          <th>
+          </th>
                   </tr>
 
                   <%@the_follow_request.each do |person|%>
                   <tr>
                     <td>
                     <%=person.sender.username%>
+                    </td>
+                    <td>
+                    <%=person.created_at%>
                     </td>
                     <td>
                           <h4><a href="/user/<%= person.sender.id %>">
@@ -23,10 +31,24 @@
 
                   </tr>
                   <%end%>
+            </table>
+            <br>
+            <br>
+            <h1>  </h1>
+
+ <table border="1">
+        <tr>
 
 
           <th>
-            new decorations
+            New Decorations
+          </th>
+          <th>
+           Answer
+          </th>
+          <th>
+          Decoration Time
+           
           </th>
                   </tr>
 
@@ -40,10 +62,11 @@
                           <%=@useruser.username%>
                           </td>
                            <td>
-                          <h4><a href="/question/<%=to_test%>">
-                            visit the decorated question
-                          </a></h4>
-                        </td>
+                           <%=answer.entry%>
+                          </td>
+                          <td>
+                          <%=@k.at(0).created_at%>
+                          </td>
                           
                         </tr>  
                       <%end%>

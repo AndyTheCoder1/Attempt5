@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get("/notifications", { :controller => "follow_requests", :action => "notifications" })
 
+  get("/notifications", { :controller => "follow_requests", :action => "notifications" })
+
   get("/viewfollowing/:path_id", { :controller => "follow_requests", :action => "view" })
 
   get("/viewfollowers/:path_id", { :controller => "follow_requests", :action => "viewing" })
