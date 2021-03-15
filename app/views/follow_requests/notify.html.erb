@@ -17,3 +17,23 @@
                     </td>
                   </tr>
                   <%end%>
+
+
+          <th>
+            new decorations
+          </th>
+                  </tr>
+
+                  <%@list_of_answers.each do |answer|%>
+                      <%to_test = answer.id%>
+                     <%@k= Decoratation.where(:answer_id => to_test)%>
+                     <%@k.each do |yes|%>
+                        <%@useruser = User.where({:id => yes.user_id}).at(0)%>
+                        <tr>
+                          <td>
+                          <%=@useruser.username%>
+                          </td>
+                          
+                        </tr>  
+                      <%end%>
+                  <%end%>

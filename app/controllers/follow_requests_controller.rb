@@ -7,6 +7,13 @@ class FollowRequestsController < ApplicationController
       matching_follow_requests = FollowRequest.where({ :recipient_id => the_id })
 
       @the_follow_request = matching_follow_requests
+
+      @list_of_answers = Answer.where({ :owner_id => the_id})
+
+      
+
+
+
       
     render({ :template => "follow_requests/notify.html.erb" })
 
