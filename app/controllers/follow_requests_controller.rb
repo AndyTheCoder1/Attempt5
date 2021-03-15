@@ -13,7 +13,8 @@ class FollowRequestsController < ApplicationController
     the_follow_request.sender_id = params.fetch("follower")
     the_follow_request.recipient_id = params.fetch("following")
     the_follow_request.save
-    render({ :template => "user_authentication/profile.html.erb"})
+
+    redirect_to("/user/#{following}", { :notice => "you are now following this user"} )
 
 
   end

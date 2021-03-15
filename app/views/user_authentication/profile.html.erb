@@ -10,7 +10,7 @@
 <%@all.each do |test|%>
   <%if test.sender_id == @current_user.id%>
 
-    <form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="get">
+    <form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="post">
           
         <button>
           unfollow <%=@correct_user.username%>
@@ -25,7 +25,7 @@
   <%end%>
  <%end%>
  <%if testing == 0%>
-    <form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="get">
+    <form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="post">
           
           <button>
           Follow <%=@correct_user.username%>
