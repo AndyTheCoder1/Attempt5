@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get("/follower/:following/:follower", { :controller => "follow_requests", :action => "add_follow" })
 
    get("/edituseraccount", { :controller => "user_authentication", :action => "editing" })
   

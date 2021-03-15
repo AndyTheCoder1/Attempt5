@@ -1,4 +1,25 @@
 class FollowRequestsController < ApplicationController
+  
+  
+  def add_follow
+    following = params.fetch("following")
+    follower = params.fetch("follower")
+
+    @correct_user = User.where({ :id => following }).at(0)
+
+    @matching_answers = Answer.where({ :owner => following })
+
+    the_follow_request = FollowRequest.new
+    the_follow_request.sender_id = params.fetch("follower")
+    the_follow_request.recipient_id = params.fetch("following")
+    the_follow_request.save
+    render({ :template => "user_authentication/profile.html.erb"})
+
+
+  end
+  
+  
+  
   def index
     matching_follow_requests = FollowRequest.all
 
