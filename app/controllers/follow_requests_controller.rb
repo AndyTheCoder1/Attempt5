@@ -15,6 +15,20 @@ class FollowRequestsController < ApplicationController
     end
   end
 
+  def viewing
+    the_id = params.fetch("path_id")
+
+    matching_follow_requests = FollowRequest.where({ :recipient_id => the_id })
+
+    if matching_follow_requests.count == 0
+      redirect_to("/user/#{the_id}", { :notice => "this user has no followers, help them out by following them!"} )
+    else
+      @the_follow_request = matching_follow_requests
+
+      render({ :template => "follow_requests/showtwo.html.erb" })
+    end
+  end
+
 
 
   def add_follow
