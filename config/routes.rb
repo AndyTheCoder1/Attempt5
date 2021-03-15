@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
 
    get("/edituseraccount", { :controller => "user_authentication", :action => "editing" })
-
+  
+   get("/listofusers", { :controller => "user_authentication", :action => "allusers" })
   
   
   post("/createadmin", { :controller => "user_authentication", :action => "create_admin" })

@@ -1,0 +1,34 @@
+
+ 
+ 
+  <div>
+    <div>
+      <table border="1">
+        <tr>
+
+          <th>
+            Username
+          </th>
+       
+        
+        </tr>
+            <% @users.each do |a_user| %>
+
+            <tr>
+                  <td>
+                    <%= a_user.username %>
+                  </td>
+
+                  <td>
+                  <h4><a href="/user/<%= a_user.id %>">
+                    visit <%=a_user.username%>'s' profile
+                  </a></h4>
+                  </td>
+              </tr>
+              <%end%>
+
+
+
+
+
+
