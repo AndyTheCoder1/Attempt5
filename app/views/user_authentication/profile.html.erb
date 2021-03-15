@@ -6,7 +6,26 @@
 <h3> <%=@correct_user.username%> has <%=@all.count%> followers </h3>
 
 
-<form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="get">
+<%testing = 0%>
+<%@all.each do |test|%>
+  <%if test.sender_id == @current_user.id%>
+
+    <form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="get">
+          
+        <button>
+          unfollow <%=@correct_user.username%>
+        </button>
+        <br>
+        <div></div>
+        </form>
+
+        <hr>
+        <%testing = 1%>
+        <%break%>
+  <%end%>
+ <%end%>
+ <%if testing == 0%>
+    <form action="/follower/<%=@correct_user.id%>/<%=@current_user.id%>" method="get">
           
           <button>
           Follow <%=@correct_user.username%>
@@ -15,7 +34,8 @@
         <div></div>
 
         <hr>
-</form>
+    </form>
+<%end%>
 
 
   <div>
