@@ -18,6 +18,22 @@ class FollowRequestsController < ApplicationController
 
 
   end
+
+  def unfollow
+    following = params.fetch("following")
+    follower = params.fetch("follower")
+
+    to_terminate = FollowRequest.where({:sender_id => follower, :recipient_id => following}).at(0)
+
+    to_terminate.destroy
+
+
+    
+
+    redirect_to("/user/#{following}", { :notice => "you have unfollowed this user"} )
+
+
+  end
   
   
   

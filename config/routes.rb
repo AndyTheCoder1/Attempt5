@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   post("/follower/:following/:follower", { :controller => "follow_requests", :action => "add_follow" })
 
+  post("/unfollower/:following/:follower", { :controller => "follow_requests", :action => "unfollow" })
+
    get("/edituseraccount", { :controller => "user_authentication", :action => "editing" })
   
    get("/listofusers", { :controller => "user_authentication", :action => "allusers" })
