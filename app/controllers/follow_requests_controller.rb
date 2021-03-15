@@ -1,6 +1,22 @@
 class FollowRequestsController < ApplicationController
   
-  
+
+  def view
+    the_id = params.fetch("path_id")
+
+    matching_follow_requests = FollowRequest.where({ :sender_id => the_id })
+
+    if matching_follow_requests.count == 0
+      redirect_to("/user/#{the_id}", { :notice => "this user is following no one"} )
+    else
+      @the_follow_request = matching_follow_requests
+
+      render({ :template => "follow_requests/show.html.erb" })
+    end
+  end
+
+
+
   def add_follow
     following = params.fetch("following")
     follower = params.fetch("follower")
@@ -45,15 +61,7 @@ class FollowRequestsController < ApplicationController
     render({ :template => "follow_requests/index.html.erb" })
   end
 
-  def show
-    the_id = params.fetch("path_id")
-
-    matching_follow_requests = FollowRequest.where({ :id => the_id })
-
-    @the_follow_request = matching_follow_requests.at(0)
-
-    render({ :template => "follow_requests/show.html.erb" })
-  end
+  
 
   def create
     the_follow_request = FollowRequest.new

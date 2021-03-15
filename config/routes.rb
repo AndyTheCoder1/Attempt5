@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get("/viewfollowing/:path_id", { :controller => "follow_requests", :action => "view" })
+
   post("/follower/:following/:follower", { :controller => "follow_requests", :action => "add_follow" })
 
   post("/unfollower/:following/:follower", { :controller => "follow_requests", :action => "unfollow" })

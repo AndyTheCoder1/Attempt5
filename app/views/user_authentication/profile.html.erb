@@ -1,12 +1,19 @@
 <h1><%=@correct_user.username%>'s Diary</h1>
 
+<%=@matching_follow_requests%>
+
 <%@all = FollowRequest.where(:recipient_id => @correct_user.id) %>
 <%@all_following = FollowRequest.where(:sender_id => @correct_user.id) %>
 
 
+<a href="/viewfollowing/<%=@correct_user.id%>">
+  <%=@correct_user.username%> is following <%=@all_following.count%> people</a>
+  <br>
+
+<a href="/viewfollowers/<%=@correct_user.id%>">
+  <%=@correct_user.username%> has <%=@all.count%> followers </a>
 
 
-<i> <%=@correct_user.username%> is following <%=@all_following.count%> people, and <%=@correct_user.username%> has <%=@all.count%> followers </i>
 <br>
 <div>
  <h1> </h1>
