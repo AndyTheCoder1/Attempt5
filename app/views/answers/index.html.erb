@@ -4,6 +4,21 @@
 <div>
   <div>
   
+
+
+    <%=@top_three_words%>
+
+    <%@top_three_words.each do |word|%>
+    <div>
+      <%= word%>
+      <%=Answer.where("entry LIKE ?", "#{word}%").each do |response|%>
+        <%=response.body%>
+        <hr>
+        <%end%>
+    </div>
+    <%end%>
+
+
     <h1>
       Global Question of the Day:
       </h1>
