@@ -81,7 +81,7 @@ class AnswersController < ApplicationController
 
     unique_words.each do |word|
       # {"question" => 3}
-    if word != "the" && word != "a" && word != "I" && word != "to" && word != "is" && word != "my" && word != "are"
+    if word != "the" && word != "a" && word != "I" && word != "to" && word != "is" && word != "my" && word != "are" && word != "he" && word != "up" && word != "because" && word != "like"
       word_count = all_answers.split.count(word)
       word_hash = { word => word_count }
       @unique_words_counts.store(word, word_count)
