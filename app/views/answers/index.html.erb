@@ -200,19 +200,26 @@
   <th>
   World Trends - Frequently used words from today's answers
   </th>
+
+
+  
 </tr>
 
 <%@top_three_words.each do |word|%>
 
- <tr>
+
       <td>
-      <%= word%>
-      <%Answer.where("entry LIKE?", "%#{word}%").each do |thing|%>
-      <%=thing.entry%>
-      <hr>
+        <%= word%>
       </td>
+
       </tr>
-      <%end%>
+      <%#Answer.where("entry LIKE?", "%#{word}%").each do |thing|%>
+
+        <%#thing.entry%>
+     
+      
+    </tr>
+      
 <%end%>
   </table>
 
