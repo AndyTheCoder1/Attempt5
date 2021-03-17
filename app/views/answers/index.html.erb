@@ -6,7 +6,7 @@
   
 
 
-    <%@top_three_words%>
+
 
     
 
@@ -207,9 +207,13 @@
  <tr>
       <td>
       <%= word%>
+      <%Answer.where("entry LIKE?", "%#{word}%").each do |thing|%>
+      <%=thing.entry%>
+      <hr>
       </td>
       </tr>
-    <%end%>
+      <%end%>
+<%end%>
   </table>
 
  
