@@ -67,6 +67,40 @@ class AnswersController < ApplicationController
 
     @today = Date.today
 
+    #wordcloud
+    all_answers = ""
+    @list_of_answers.each do |answers|
+      if answers.question.id == @question.id
+         all_answers += answers.entry + " "
+      end
+    end
+
+    unique_words = all_answers.split.uniq
+    @unique_words_counts = {}
+    top_three_words = []
+
+    unique_words.each do |word|
+      # {"question" => 3}
+    if word != "the" && word != "a" && word != "I" && word != "to" && word != "is" && word != "my" && word != "are"
+      word_count = all_answers.split.count(word)
+      word_hash = { word => word_count }
+      @unique_words_counts.store(word, word_count)
+
+      if top_three_words.count == 0 || top_three_words.count < 3
+        top_three_words.push(word)
+
+      elsif word_count > @unique_words_counts.fetch(top_three_words.at(0))
+        top_three_words[0] = word
+        elsif word_count > @unique_words_counts.fetch(top_three_words.at(1))
+        top_three_words[1] = word
+        elsif word_count > @unique_words_counts.fetch(top_three_words.at(2))
+        top_three_words[2] = word
+      end
+    end
+  end
+
+    @top_three_words = top_three_words
+
 
     render({ :template => "answers/indexyesterday.html.erb" })
   end
@@ -91,6 +125,40 @@ class AnswersController < ApplicationController
 
     @today = Date.today
 
+    #wordcloud
+    all_answers = ""
+    @list_of_answers.each do |answers|
+      if answers.question.id == @question.id
+         all_answers += answers.entry + " "
+      end
+    end
+
+    unique_words = all_answers.split.uniq
+    @unique_words_counts = {}
+    top_three_words = []
+
+    unique_words.each do |word|
+      # {"question" => 3}
+    if word != "the" && word != "a" && word != "I" && word != "to" && word != "is" && word != "my" && word != "are"
+      word_count = all_answers.split.count(word)
+      word_hash = { word => word_count }
+      @unique_words_counts.store(word, word_count)
+
+      if top_three_words.count == 0 || top_three_words.count < 3
+        top_three_words.push(word)
+
+      elsif word_count > @unique_words_counts.fetch(top_three_words.at(0))
+        top_three_words[0] = word
+        elsif word_count > @unique_words_counts.fetch(top_three_words.at(1))
+        top_three_words[1] = word
+        elsif word_count > @unique_words_counts.fetch(top_three_words.at(2))
+        top_three_words[2] = word
+      end
+    end
+  end
+
+    @top_three_words = top_three_words
+
 
     render({ :template => "answers/indexyesterday.html.erb" })
   end
@@ -105,6 +173,40 @@ class AnswersController < ApplicationController
     matching_answers = Answer.all
 
     @list_of_answers = matching_answers.order({ :created_at => :desc })
+
+    #wordcloud
+    all_answers = ""
+    @list_of_answers.each do |answers|
+      if answers.question.id == @question.id
+         all_answers += answers.entry + " "
+      end
+    end
+
+    unique_words = all_answers.split.uniq
+    @unique_words_counts = {}
+    top_three_words = []
+
+    unique_words.each do |word|
+      # {"question" => 3}
+    if word != "the" && word != "a" && word != "I" && word != "to" && word != "is" && word != "my" && word != "are"
+      word_count = all_answers.split.count(word)
+      word_hash = { word => word_count }
+      @unique_words_counts.store(word, word_count)
+
+      if top_three_words.count == 0 || top_three_words.count < 3
+        top_three_words.push(word)
+
+      elsif word_count > @unique_words_counts.fetch(top_three_words.at(0))
+        top_three_words[0] = word
+        elsif word_count > @unique_words_counts.fetch(top_three_words.at(1))
+        top_three_words[1] = word
+        elsif word_count > @unique_words_counts.fetch(top_three_words.at(2))
+        top_three_words[2] = word
+      end
+    end
+  end
+
+    @top_three_words = top_three_words
 
     render({ :template => "answers/index.html.erb" })
   end
@@ -129,7 +231,9 @@ class AnswersController < ApplicationController
     #wordcloud
     all_answers = ""
     @list_of_answers.each do |answers|
-      all_answers += answers.entry + " "
+      if answers.question.id == @question.id
+         all_answers += answers.entry + " "
+      end
     end
 
     unique_words = all_answers.split.uniq
@@ -138,7 +242,7 @@ class AnswersController < ApplicationController
 
     unique_words.each do |word|
       # {"question" => 3}
-    if word != "the" && word != "a" && word != "I"
+    if word != "the" && word != "a" && word != "I" && word != "to" && word != "is" && word != "my" && word != "are"
       word_count = all_answers.split.count(word)
       word_hash = { word => word_count }
       @unique_words_counts.store(word, word_count)

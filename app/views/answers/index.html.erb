@@ -6,17 +6,9 @@
   
 
 
-    <%=@top_three_words%>
+    <%@top_three_words%>
 
-    <%@top_three_words.each do |word|%>
-    <div>
-      <%= word%>
-      <%=Answer.where("entry LIKE ?", "#{word}%").each do |response|%>
-        <%=response.body%>
-        <hr>
-        <%end%>
-    </div>
-    <%end%>
+    
 
 
     <h1>
@@ -203,13 +195,29 @@
       </table>
     </div>
   </div>
-  </center>
-      
+ <table border="1">
+<tr>
+  <th>
+  World Trends - Frequently used words from today's answers
+  </th>
+</tr>
 
-      </center>
+<%@top_three_words.each do |word|%>
+
+ <tr>
+      <td>
+      <%= word%>
+      </td>
+      </tr>
+    <%end%>
+  </table>
+
+ 
 
 
-    <%else%>
+    </center>
+
+<%else%>
       <form action="/insert_answer" method="post">
         <div>
           <label for="entry_box">
@@ -373,5 +381,25 @@
       </table>
     </div>
   </div>
-  </center>
-<%end%>  
+
+<table border="1">
+<tr>
+  <th>
+  World Trends - Frequently used words from today's answers
+  </th>
+</tr>
+
+<%@top_three_words.each do |word|%>
+
+ <tr>
+      <td>
+      <%= word%>
+      </td>
+      </tr>
+    <%end%>
+  </table>
+
+<%end%> 
+
+
+    </center>
