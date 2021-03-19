@@ -103,7 +103,6 @@
               Seeker
             </th>
 
-
             <th>
               Decoratation count
             </th>
@@ -540,6 +539,7 @@
                     <%= time_ago_in_words(an_answer.created_at) %> ago
                   </td>
                 
+                
                   <%@testing = 0%>
               
                   <%Decoratation.where({ :answer_id => an_answer.id }).each do |search|%>
@@ -560,7 +560,6 @@
                       </a>
                     </td>
                   <%end%>
-                  </td>
                     <% if an_answer.owner.username == @current_user.username %>
                       <td>
                           <h4><a href="/edit_user_profile">
